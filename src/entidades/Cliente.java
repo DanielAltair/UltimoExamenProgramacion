@@ -16,10 +16,11 @@ public class Cliente {
 	private String apellido2Cliente;
 	private String emailCliente;
 	private String claveCliente;
+	private String rolCliente;
 	private boolean esValidado;
 	
 	public Cliente(int idCliente, String dniCliente, String nombreCompletoCliente, String nombreCliente,
-			String apellido1Cliente, String apellido2Cliente, String emailCliente, String claveCliente,
+			String apellido1Cliente, String apellido2Cliente, String emailCliente, String claveCliente, String rolCliente,
 			boolean esValidado) {
 		super();
 		this.idCliente = idCliente;
@@ -30,6 +31,7 @@ public class Cliente {
 		this.apellido2Cliente = apellido2Cliente;
 		this.emailCliente = emailCliente;
 		this.claveCliente = claveCliente;
+		this.rolCliente = rolCliente;
 		this.esValidado = esValidado;
 	}
 	public int getIdCliente() {
@@ -86,6 +88,12 @@ public class Cliente {
 	public void setEsValidado(boolean esValidado) {
 		this.esValidado = esValidado;
 	}
+	public String getRolCliente() {
+		return rolCliente;
+	}
+	public void setRolCliente(String rolCliente) {
+		this.rolCliente = rolCliente;
+	}
 	@Override
 	public String toString() {
 		  String esValidadoBien = (esValidado == true) ? "si"  : "no" ;
@@ -93,8 +101,9 @@ public class Cliente {
 				+ "NOMBRE: " + nombreCompletoCliente
 				+ "\n"
 				+ "ESTADO VALIDACIÓN: " + esValidadoBien + "\n"
+				+ "ROL: " + rolCliente + "\n"
 				+ "%%%%%%%%%%";
 	}
-	
+
 
 }

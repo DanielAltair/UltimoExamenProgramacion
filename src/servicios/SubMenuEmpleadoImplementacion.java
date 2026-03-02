@@ -10,7 +10,8 @@ public class SubMenuEmpleadoImplementacion implements MenuInterfaz {
 		System.out.println("0. Validar cliente");
 		System.out.println("1. Borrar cliente");
 		System.out.println("2. Mostrar cliente");
-		System.out.println("3. Volver al menú principal");
+		System.out.println("3. Asignar rol");
+		System.out.println("4. Volver al menú principal");
 		System.out.println("------------------------");
 	}
 
@@ -47,10 +48,15 @@ public class SubMenuEmpleadoImplementacion implements MenuInterfaz {
 					esCerradoSub = true;
 					break;
 				case 3:
+					ei.asignarRol();
+					esCerradoSub = true;
+					break;
+				case 4:
 					System.out.println("Has elegido volver al menú principal.");
 					esCerradoSub = true;
 					break;
 				default:
+					System.out.println("Opción inválida.");
 					break;
 			}
 			

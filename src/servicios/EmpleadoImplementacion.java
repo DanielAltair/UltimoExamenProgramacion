@@ -85,7 +85,9 @@ public class EmpleadoImplementacion {
 	
 	
 	public void mostrarCliente() {
+		
 		Inicio.sc.nextLine();
+		
 		boolean esCerrado = false;
 		byte opcion;
 		
@@ -143,18 +145,59 @@ public class EmpleadoImplementacion {
 	}
 	
 	
-	public void ordenarAscendente() {
+	public ArrayList<Cliente>  ordenarAscendente() {
 		ArrayList<Cliente> copiaLista = new ArrayList<>(Inicio.listaClientes);
 		
 		int n = copiaLista.size();
 		
 		for (int i = 0; i < n - 1; i++) {
-			for(int j = 0; j < n -i -1; j++) {
-				//if(copiaLista.get(j) > copiaLista.get(j + 1)) {
-				//}
+			for(int j = 0; j < n - i - 1; j++) {
+				if(copiaLista.get(j).getApellido1Cliente().compareToIgnoreCase(copiaLista.get(j + 1).getApellido1Cliente())> 0) {
+					
+					Cliente temp = copiaLista.get(j);
+	                copiaLista.set(j, copiaLista.get(j + 1));
+	                copiaLista.set(j + 1, temp);
+				}
 			}
 		
 		}
+		System.out.println(copiaLista.toString());
+		return copiaLista;
 
+	}
+	public void asignarRol() {
+		ClienteImplementacion ci = new ClienteImplementacion();
+
+		boolean dniValidado = false;
+		
+		do {
+			Inicio.sc.nextLine();
+			
+			System.out.println("Introduzca el DNI del usuario para asignarle el rol: ");
+			String dniRol = Inicio.sc.nextLine();
+			if(ci.validacionDni(dniRol)) {
+				System.out.println("DNI: " + dniRol + " válido.");
+				
+				for(Cliente c : Inicio.listaClientes) {
+						
+							if(c.getDniCliente().equals(dniRol)) {
+								
+								dniValidado = true;
+								
+								System.out.println("Qué rol quieres asignarle (Empleado o Cliente): ");
+								String rolCliente = Inicio.sc.nextLine();
+								
+								c.setRolCliente(rolCliente);
+								
+								System.out.println("Se le ha asignado correctamente el rol " + rolCliente + " al usuario con DNI " + dniRol + ".");
+								break;
+							}
+				}
+				
+			}else {
+				System.out.println("DNI inválido.");
+			}
+			
+		}while(!dniValidado);
 	}
 }

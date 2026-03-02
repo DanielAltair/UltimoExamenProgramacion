@@ -22,6 +22,7 @@ public class ClienteImplementacion {
 		nuevoCliente.setNombreCompletoCliente(partes[0] + " " + partes[1] + " "+ partes[2]);		
 		System.out.println("Introduzca el email:  (formato pepito@gmail.com)");
 		nuevoCliente.setEmailCliente(Inicio.sc.nextLine());
+		nuevoCliente.setRolCliente("Cliente");
 		
 		System.out.println("Introduzca la contraseña: ");
 		nuevoCliente.setClaveCliente(Inicio.sc.nextLine());
@@ -48,6 +49,7 @@ public class ClienteImplementacion {
 		nuevoCliente.setIdCliente(generarIdCliente());
 		
 		Inicio.listaClientes.add(nuevoCliente);
+		
 	}
 	
 	 
@@ -71,6 +73,7 @@ public class ClienteImplementacion {
 					if(email.equals(c.getEmailCliente()) && clave.equals(c.getClaveCliente())) {
 					
 						esValidado = true;
+						Inicio.sesion = c.getRolCliente();
 						break;
 						
 					}
@@ -80,6 +83,7 @@ public class ClienteImplementacion {
 					
 					System.out.println("INCIO DE SESIÓN CORRECTO.");
 					contadorIntentos = 4;
+					
 					
 				}else {
 					
@@ -93,7 +97,7 @@ public class ClienteImplementacion {
 	}
 	
 	
-	private int  generarIdCliente() {
+	public int  generarIdCliente() {
 		if(Inicio.listaClientes.isEmpty()) {
 			return 1;
 		}else {
